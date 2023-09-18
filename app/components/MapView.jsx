@@ -19,9 +19,9 @@ export default function MapView(){
     
         useEffect(() => {
           map.invalidateSize();
-        }, [map, isExpanded]);  // Added dependency on isExpanded to trigger the effect when expansion state changes
+        }, [map]);  // [map, isExpanded]
     
-        return null;  // This component doesn't render anything directly
+        return null;  
     };
     const url = 'http://localhost:8080/geoserver/dashboard/wms?'
     return(

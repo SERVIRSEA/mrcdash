@@ -1,5 +1,4 @@
 import { Inter } from 'next/font/google'
-import MrcLogo from '../public/assets/images/logos/MRC-logo.svg'
 
 const inter = Inter({ subsets: ['latin'] })
 

@@ -7,11 +7,20 @@ import Sidebar from "./Sidebar/Sidebar";
 import { expandAtom } from '../state/atoms';
 import MapView from './MapView';
 import FullscreenControl from './FullScreenControl';
+import dynamic from 'next/dynamic';
 
 const FullScreenContainer = styled('div')({
     backgroundColor: '#FFFFFF',
     height: '100%',
     width: '100%',
+});
+
+// Load the MapView component dynamically (client-side only)
+const DynamicMapView = dynamic(() => import('./MapView'), {
+    // A loading component, if needed
+    loading: () => <p>Loading map...</p>,
+    // This ensures it only tries to load on client side
+    ssr: false
 });
 
 export default function MapLayout(){
@@ -30,7 +39,10 @@ export default function MapLayout(){
                 </Grid>
                 <Grid container>
                     <Grid md={isExpanded ? 12 : 6}>
-                        <MapView />
+                        {/* <MapView /> */}
+                        <div id="map">
+                            <DynamicMapView />
+                        </div>
                     </Grid>
                     {!isExpanded && (
                     <>

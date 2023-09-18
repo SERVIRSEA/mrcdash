@@ -49,7 +49,7 @@ export default function Today(){
             <AccordionDetails>
                 <Link href="#" underline="none">
                     <Typography variant="button" component="body2" sx={{color: "#000"}}>
-                        TODAY'S STATUS
+                        TODAY&apos;S STATUS
                     </Typography>
                 </Link>
             </AccordionDetails>
