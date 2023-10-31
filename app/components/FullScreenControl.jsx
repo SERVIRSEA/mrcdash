@@ -26,7 +26,7 @@ export default function FullscreenControl({ targetRef }){
         }
     };
     return (
-        <Box display="flex" justifyContent="flex-end">
+        <Box display="flex" justifyContent="flex-end" sx={{ bgcolor: '#2E2E2E'}}>
             {
                 isFullscreen ?
                 <FullscreenExitIcon style={{ fontSize: 40, color: "#FFD700", cursor: "pointer"}} onClick={toggleFullScreen} />

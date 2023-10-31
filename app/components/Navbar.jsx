@@ -15,8 +15,8 @@ function Navbar() {
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppBar component="nav" position="static" sx={{background: "#01579b"}}>
-                <Container disableGutters >
-                    <Toolbar sx={{p: 0, m: 0}}>
+                {/* <Container maxWidth="xl" > */}
+                    <Toolbar>
                         <IconButton
                             color="inherit"
                             aria-label="open drawer"
@@ -36,7 +36,7 @@ function Navbar() {
                             Flood and Drought Monitoring Dashboard
                         </Typography>
                     </Toolbar>
-                </Container>
+                {/* </Container> */}
             </AppBar>
         </Box> 
     );

@@ -16,9 +16,9 @@ export default function Today(){
             expanded={expandedPanel === 'panel1'} 
             onChange={(event, isExpanded) => setExpandedPanel(isExpanded ? 'panel1' : false)}
             sx={{
-                boxShadow: 'none', // Removes default shadow
+                boxShadow: 'none',
                 '&:before': {
-                    height: '1px', // Removes the default top border
+                    height: '1px',
                 },
                 '&.Mui-expanded': {
                     margin: '0',

@@ -1,41 +1,49 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAtom } from 'jotai';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { MapContainer, TileLayer, useMap, LayersControl } from 'react-leaflet';
+import { MapContainer, TileLayer, LayerGroup, useMap, LayersControl, ZoomControl } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { expandAtom } from '../state/atoms';
+import { expandAtom } from '../state/atom';
 import Basemaps from './Basemaps';
 import Legend from './Legend';
-import DroughtLayers from './Sidebar/Menu/DroughtForecast/DroughtLayers';
-
+import ReservoirsLayer from './Layers/ReservoirsLayer';
+import DroughtForecastLayers from './Sidebar/Menu/DroughtForecast/DroughtForecastLayers/DroughtForecastLayers';
+import CDILayer from './Sidebar/Menu/DroughtForecast/DroughtForecastLayers/CDILayer';
+import CustomLayerControlButton from './Button/CustomLayerControlButton';
+import { currentBasemapAtom } from '../state/atom';
 
 export default function MapView(){
+    
     const [isExpanded, setIsExpanded] = useAtom(expandAtom);
+    const [currentBasemap] = useAtom(currentBasemapAtom);
+
     const MyMap = () => {
         const map = useMap();
     
         useEffect(() => {
           map.invalidateSize();
-        }, [map]);  // [map, isExpanded]
+        }, [map]);  
     
         return null;  
     };
-    const url = 'http://localhost:8080/geoserver/dashboard/wms?'
-    return(
-        <MapContainer center={[16.09, 103.91]} zoom={5} style={{ width: '100%', height: 'calc(100vh - 150px)' }}>
-            {/* <TileLayer
-                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            /> */}
-            
-            <LayersControl position="topright">
-                <Basemaps />
-                <DroughtLayers />
-            </LayersControl>
+    
+    const mapStyle = {
+        width: '100%', 
+        height: 'calc(100vh - 150px)',
+    }
 
+    const attribution = 'Tiles © Esri — Source: Esri, USGS, OSM and the GIS User Community';
+    return(
+        <MapContainer center={[16.09, 103.91]} zoom={5} zoomControl={true} style={mapStyle}>
+             <TileLayer url={currentBasemap} attribution={attribution} />
+            {/* <ZoomControl position="topleft" /> */}
+            <CustomLayerControlButton />
+            
+            <DroughtForecastLayers />
+            
             <div 
                 style={{
                     position: 'absolute',

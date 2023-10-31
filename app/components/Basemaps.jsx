@@ -5,11 +5,11 @@ export default function Basemaps(){
     const satelliteMap = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
     const streetMap = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}';
     const terrainMap = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}';
-    const attribution = 'Tiles © Esri — Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
+    const attribution = 'Tiles © Esri — Source: Esri, USGS, OSM and the GIS User Community';
     return(
         <>
             <LayersControl.BaseLayer checked name="MRC Basemap Version">
-                <TileLayer url={lightMap} attribution={attribution}/>
+                <TileLayer url={lightMap} attribution={attribution} zIndex={0}/>
             </LayersControl.BaseLayer>
             <LayersControl.BaseLayer name="Satellite Map">
                 <TileLayer url={satelliteMap} attribution={attribution}/>

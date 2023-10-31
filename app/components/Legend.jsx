@@ -1,98 +1,36 @@
-import { Box, List, ListItem, Button, Typography } from "@mui/material";
+import { useAtom } from "jotai"
+import CDILegend from "./Legend/CDILegend"
+import ISWFLegend from "./Legend/ISWFLegend"
+import SPI1Legend from "./Legend/SPI1Legend"
+import { 
+    cdiLayerVisibilityAtom,
+    iswfLayerVisibilityAtom,
+    spi1LayerVisibilityAtom
+} from "../state/atom"
+import { Box } from "@mui/material"
 
-export default function Legend(){
-    return(
-        <div 
-            style={{
-                position: 'absolute',
-                left: '10px',
-                bottom: '7%',
-                background: '#eee',
-                zIndex: 600,
-                maxHeight: '180px',
-                overflowY: 'auto'
-            }}
-        >
-            <Box p={2} overflowY="auto" sx={{ maxHeight: '160px' }}>
-                <List>
-                    <ListItem disablePadding sx={{ paddingTop: 0, paddingBottom: 0 }}>
-                        <Box display="flex" alignItems="center" width="100%" justifyContent="start">
-                            <Button 
-                                variant="contained" 
-                                sx={{
-                                    backgroundColor: '#ffc400', 
-                                    height: "20px", 
-                                    borderRadius: 0, 
-                                    cursor: 'crosshair', 
-                                    '&:hover': {
-                                        backgroundColor: '#ffc400',  
-                                    }
-                                }}
-                            ></Button>
-                            <Typography variant="body1" pl={2}>
-                                Moderate
-                            </Typography>
-                        </Box>
-                    </ListItem>
-                    <ListItem disablePadding sx={{ paddingTop: 1, paddingBottom: 0 }}>
-                        <Box display="flex" alignItems="center" width="100%" justifyContent="start">
-                            <Button 
-                                variant="contained" 
-                                sx={{
-                                    backgroundColor: '#b28900', 
-                                    height: "20px", 
-                                    borderRadius: 0, 
-                                    cursor: 'crosshair', 
-                                    '&:hover': {
-                                        backgroundColor: '#b28900',  
-                                    }
-                                }}
-                            ></Button>
-                            <Typography variant="body1" pl={2}>
-                                Severe
-                            </Typography>
-                        </Box>
-                    </ListItem>
-                    <ListItem disablePadding sx={{ paddingTop: 1, paddingBottom: 0 }}>
-                        <Box display="flex" alignItems="center" width="100%" justifyContent="start">
-                            <Button 
-                                variant="contained" 
-                                sx={{
-                                    backgroundColor: '#b22a00', 
-                                    height: "20px", 
-                                    borderRadius: 0, 
-                                    cursor: 'crosshair', 
-                                    '&:hover': {
-                                        backgroundColor: '#b22a00',  
-                                    }
-                                }}
-                            ></Button>
-                            <Typography variant="body1" pl={2}>
-                                Extreme
-                            </Typography>
-                        </Box>
-                    </ListItem>
-                    <ListItem disablePadding sx={{ paddingTop: 1, paddingBottom: 0 }}>
-                        <Box display="flex" alignItems="center" width="100%" justifyContent="start">
-                            <Button 
-                                variant="outlined" 
-                                sx={{
-                                    borderColor: 'black', 
-                                    height: "20px", 
-                                    borderRadius: 0, 
-                                    cursor: 'crosshair', 
-                                    '&:hover': {
-                                        borderColor: 'black',  
-                                    }
-                                }}
-                            ></Button>
-                            <Typography variant="body1" pl={2}>
-                                Normal
-                            </Typography>
-                        </Box>
-                    </ListItem>
-                </List>
-            </Box>
+export default function Legend() {
+    const [cdiLegendVisible] = useAtom(cdiLayerVisibilityAtom);
+    const [iswfLegendVisible] = useAtom(iswfLayerVisibilityAtom);
+    const [spi1LegendVisible] = useAtom(spi1LayerVisibilityAtom);
+  
+    return (
+        <div style={{ position: 'absolute', right: '10px', bottom: '25px', background: '#eee', zIndex: 600, maxHeight: '180px', overflow: 'auto' }}>
+            {cdiLegendVisible && (
+                <Box>
+                    <CDILegend />
+                </Box>
+            )}
+            {iswfLegendVisible && (
+                <Box>
+                    <ISWFLegend />
+                </Box>
+            )}
+            {spi1LegendVisible && (
+                <Box mt={(iswfLegendVisible) ? 6 : 0}>
+                    <SPI1Legend />
+                </Box>
+            )}
         </div>
-    )
-}
+    );
+  }

@@ -4,10 +4,14 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/system';
 import Sidebar from "./Sidebar/Sidebar";
-import { expandAtom } from '../state/atoms';
+import { expandAtom } from '../state/atom';
 import MapView from './MapView';
 import FullscreenControl from './FullScreenControl';
 import dynamic from 'next/dynamic';
+import DatePanel from './DatePanel';
+import ReservoirChart from './Sidebar/Menu/DroughtForecast/Charts/ReservoirChart';
+import { sideNavContentWidthAtom, statTabValueAtom } from '@/app/state/atom';
+import StatTabs from './Tabs/StatTabs';
 
 const FullScreenContainer = styled('div')({
     backgroundColor: '#FFFFFF',
@@ -23,36 +27,53 @@ const DynamicMapView = dynamic(() => import('./MapView'), {
     ssr: false
 });
 
-export default function MapLayout(){
+
+export default function MLayout() {
+    const [sideNavWidth] = useAtom(sideNavContentWidthAtom)
     const [isExpanded] = useAtom(expandAtom);
     const gridRef = useRef(null);
-    return(
-        <Grid container sx={{ height: 'calc(100vh - 75px)' }}>
-            <Grid xs={3} md={3} lg={3}>
+    const [selectedTabIndex] = useAtom(statTabValueAtom);
+
+    return (
+        <Grid container spacing={0}>
+            <Grid item sx={{ width: sideNavWidth === '300px' ? '380px' : '80px', margin: 0 }}>
                 <Sidebar />
             </Grid>
-            <Grid xs={9} md={9} lg={9}>
+            <Grid item sx={{ flexGrow: 1, margin: 0 }}>
                 <Grid>
                     <Box p={3} sx={{height: '75px', overflow: 'auto'}}>
                         Recent info
                     </Box>
                 </Grid>
                 <Grid container>
-                    <Grid md={isExpanded ? 12 : 6}>
-                        {/* <MapView /> */}
+                    <Grid item md={isExpanded ? 12 : 6}>
+                        
                         <div id="map">
                             <DynamicMapView />
                         </div>
                     </Grid>
                     {!isExpanded && (
                     <>
-                        <Grid md={6}>
+                        <Grid item md={6}>
                             <FullScreenContainer ref={gridRef}>
-                                <Grid xs={12} sx={{bgcolor: '#2E2E2E'}}>
-                                    <FullscreenControl targetRef={gridRef}/>
+                                <Grid item xs={12} sx={{bgcolor: '#2E2E2E'}}>
+                                    <Grid container spacing={2} alignItems="center">
+                                        <Grid item xs={11}>
+                                            <StatTabs />
+                                        </Grid>
+                                        <Grid item xs={1}>
+                                            <FullscreenControl targetRef={gridRef} />
+                                        </Grid>
+                                    </Grid>
                                 </Grid>
-                                <Grid xs={12}>
-                                    Some text here
+                                <Grid item xs={12}>
+                                    {selectedTabIndex === 0 && <DatePanel />} 
+                                    {selectedTabIndex === 1 && <></>} 
+                                    {selectedTabIndex === 2 && <></>} 
+                                    {selectedTabIndex === 3 && <></>} 
+                                    {selectedTabIndex === 4 && <></>} 
+                                    {selectedTabIndex === 5 && <></>} 
+                                    {selectedTabIndex === 6 && <></>}
                                 </Grid>
                             </FullScreenContainer>
                         </Grid>
