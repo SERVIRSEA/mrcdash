@@ -7,11 +7,9 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { MapContainer, TileLayer, LayerGroup, useMap, LayersControl, ZoomControl } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { expandAtom } from '../state/atom';
-import Basemaps from './Basemaps';
 import Legend from './Legend';
 import ReservoirsLayer from './Layers/ReservoirsLayer';
 import DroughtForecastLayers from './Sidebar/Menu/DroughtForecast/DroughtForecastLayers/DroughtForecastLayers';
-import CDILayer from './Sidebar/Menu/DroughtForecast/DroughtForecastLayers/CDILayer';
 import CustomLayerControlButton from './Button/CustomLayerControlButton';
 import { currentBasemapAtom } from '../state/atom';
 

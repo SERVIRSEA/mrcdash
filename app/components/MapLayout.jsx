@@ -5,7 +5,6 @@ import Grid from '@mui/material/Grid';
 import { styled } from '@mui/system';
 import Sidebar from "./Sidebar/Sidebar";
 import { expandAtom } from '../state/atom';
-import MapView from './MapView';
 import FullscreenControl from './FullScreenControl';
 import dynamic from 'next/dynamic';
 import DatePanel from './DatePanel';
