@@ -3,12 +3,11 @@ import { useAtom } from 'jotai';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import { statTabValueAtom, statTabContentRefsAtom } from '@/app/state/atom';
+import { statTabValueAtom } from '@/app/state/atom';
 import AddIcon from '@mui/icons-material/Add';
 
 export default function StatTabs() {
   const [value, setValue] = useAtom(statTabValueAtom);
-  const [tabContentRefs, setTabContentRefs] = useAtom(statTabContentRefsAtom);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

@@ -8,6 +8,8 @@ import FirstPageIcon from '@mui/icons-material/FirstPage';
 import SupportingTools from "./Menu/SupportingTools/SupportingTools"
 import { sideNavContentWidthAtom } from '@/app/state/atom';
 import DroughtForecast from './Menu/DroughtForecast/DroughtForecast';
+import DatePanel from '../DatePanel';
+import FlashFloodGuidance from './Menu/FlashFloodGuidance/FlashFloodGuidance';
 
 const menuTitleAtom = atom("TODAY")
 const activeTabAtom = atom("block");
@@ -67,7 +69,7 @@ function Sidebar(){
 
     const titleStyle = {
         textAlign: 'left',
-        fontSize: '16px',
+        fontSize: '12px',
         margin: 0,
         paddingLeft: '10px',
     };
@@ -116,12 +118,13 @@ function Sidebar(){
             case 2:
                 return (
                     <div style={menuContentStyle}>
-                        {/* Content for index 2 */}
+                        {/* <FlashFloodGuidance /> */}
                     </div>
                 );
             case 3:
                 return (
                     <div style={menuContentStyle}>
+                        <DatePanel />
                         <DroughtForecast />
                     </div>
                 );

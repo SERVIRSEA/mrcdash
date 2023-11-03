@@ -8,8 +8,8 @@ import {
 
 const CustomAccordion = ({ title, children, ...props }) => (
     <Accordion {...props}>
-        <AccordionSummary>{title}</AccordionSummary>
-        <AccordionDetails>{children}</AccordionDetails>
+        <AccordionSummary sx={{ '& .MuiTypography-root': { fontSize: '12px' }}}>{title}</AccordionSummary>
+        <AccordionDetails sx={{'& .MuiTypography-root': { padding: 0, margin: 0 }}}>{children}</AccordionDetails>
     </Accordion>
 );
 

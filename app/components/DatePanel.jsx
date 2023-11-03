@@ -6,7 +6,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 export default function DatePanel() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DatePicker />
+      <DatePicker sx={{ marginTop: '10px' }} />
     </LocalizationProvider>
   );
 }

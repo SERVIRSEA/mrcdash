@@ -8,8 +8,8 @@ import SPI1Checkbox from './DroughtForecastLayers/SPI1Checkbox';
 
 export default function DroughtForecastLayersControlPanel() {
     return (
-        <div>
-            <List>
+        <> 
+            <List pt={0} mt={0}>
                 <ListItem sx={{pt:0, pb:0}}>
                     <CDICheckbox />
                 </ListItem>
@@ -20,6 +20,6 @@ export default function DroughtForecastLayersControlPanel() {
                     <SPI1Checkbox />
                 </ListItem>
             </List>
-        </div>
+        </>
     )
 }

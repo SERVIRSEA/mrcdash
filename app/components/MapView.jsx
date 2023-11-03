@@ -55,8 +55,9 @@ export default function MapView(){
                     size="small"
                     sx={{ 
                         color: '#fff',
-                        // width: '20px',  
-                        height: '130px',  
+                        width: '40px',
+                        minWidth: '0', 
+                        height: '80px',  
                         padding: 0,  
                         display: 'flex', 
                         alignItems: 'center',  
@@ -65,12 +66,15 @@ export default function MapView(){
                         color: 'black',  
                         '&:hover': {
                             backgroundColor: '#E0E0E0' 
-                        }
+                        },
+                        // '&.MuiButton-root': {
+                        //     width: '10px !important',
+                        // },
                     }}
                     onClick={() => setIsExpanded(!isExpanded)}
                 >
                     <Box component="span" sx={{ display: 'flex', alignItems: 'center', }}>
-                        {isExpanded ? <ArrowBackIosNewIcon /> : <ArrowForwardIosIcon />}
+                        {isExpanded ? <ArrowBackIosNewIcon  sx={{ fontSize: '14px' }} /> : <ArrowForwardIosIcon  sx={{ fontSize: '14px' }} />}
                     </Box>
                 </Button>
             </div> 

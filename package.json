@@ -25,6 +25,7 @@
     "next": "^14.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-flagkit": "^2.0.4",
     "react-leaflet": "^4.2.1",
     "styled-components": "^5.3.1"
   }
