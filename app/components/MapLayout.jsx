@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useAtom } from 'jotai';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { styled } from '@mui/system';
 import Sidebar from "./Sidebar/Sidebar";
 import { expandAtom } from '../state/atom';
 import FullscreenControl from './FullScreenControl';
@@ -10,7 +9,7 @@ import dynamic from 'next/dynamic';
 import ReservoirChart from './Sidebar/Menu/DroughtForecast/Charts/ReservoirChart';
 import { sideNavContentWidthAtom, statTabValueAtom } from '@/app/state/atom';
 import StatTabs from './Tabs/StatTabs';
-import FFGSContent from './Sidebar/Menu/FlashFloodGuidance/FFGSContent';
+import styled from '@emotion/styled';
 
 const FullScreenContainer = styled('div')({
     backgroundColor: '#FFFFFF',
@@ -59,24 +58,9 @@ export default function MapLayout() {
                     <>
                         <Grid item md={6}>
                             <FullScreenContainer ref={gridRef}>
-                                <Grid item xs={12} sx={{bgcolor: '#2E2E2E'}}>
-                                    <Grid container spacing={2} alignItems="center">
-                                        <Grid item xs={11}>
-                                            <StatTabs />
-                                        </Grid>
-                                        <Grid item xs={1}>
-                                            <FullscreenControl targetRef={gridRef} />
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
+                                <FullscreenControl targetRef={gridRef} />
                                 <Grid item xs={12}>
-                                    {selectedTabIndex === 0 && <FFGSContent />} 
-                                    {selectedTabIndex === 1 && <></>} 
-                                    {selectedTabIndex === 2 && <></>} 
-                                    {selectedTabIndex === 3 && <></>} 
-                                    {selectedTabIndex === 4 && <></>} 
-                                    {selectedTabIndex === 5 && <></>} 
-                                    {selectedTabIndex === 6 && <></>}
+                                    <StatTabs />
                                 </Grid>
                             </FullScreenContainer>
                         </Grid>

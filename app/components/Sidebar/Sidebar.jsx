@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { atom, useAtom } from 'jotai';
 import Image from 'next/image'
 import List from '@mui/material/List';
@@ -11,17 +11,23 @@ import DroughtForecast from './Menu/DroughtForecast/DroughtForecast';
 import DatePanel from '../DatePanel';
 import FlashFloodGuidance from './Menu/FlashFloodGuidance/FlashFloodGuidance';
 
-const menuTitleAtom = atom("TODAY")
+const menuTitleAtom = atom("")
 const activeTabAtom = atom("block");
-const activeAtom = atom(0);
-const activeTabPanelAtom = atom(0);
+const activeAtom = atom(3);
+const activeTabPanelAtom = atom(3);
 
 function Sidebar(){
     const [sideNavWidth, setSideNavWidth] = useAtom(sideNavContentWidthAtom)
     const [sideNav, setActiveSideNav] = useAtom(activeTabAtom);
     const [selectedIndex, setSelectedIndex] = useAtom(activeAtom);
     const [navContent, setActiveNavContent] = useAtom(activeTabPanelAtom);
-    const [menuTitle, setMenuTitle] = useAtom(menuTitleAtom)
+    const [menuTitle, setMenuTitle] = useAtom(menuTitleAtom);
+
+    useEffect(()=>{
+        const menuTitles = ["TODAY", "RIVER FORECAST", "FLASH FLOOD GUIDANCE", "DROUGHT FORECAST", "MEDIUM & LONG RANGE FORECAST", "RAINFALL OBSERVATION", "SUPPORTING TOOLS"];
+        setMenuTitle(menuTitles[selectedIndex] || '');
+    }, [])
+    
     
     const sidebarStyle = {
         background: "#333",

@@ -36,7 +36,7 @@ export default function CreateList({ parsed_data, param }) {
 
     // Check if parsed_data is either not available or is empty
     if (!parsed_data || parsed_data.length === 0) {
-        return <Typography align="center" variant="h6">No risk available</Typography>;
+        return <Typography align="center" variant="body1" pt={3}>No risk available</Typography>;
     }
 
     return (

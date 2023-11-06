@@ -1,14 +1,16 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { useAtom } from 'jotai';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import { statTabValueAtom } from '@/app/state/atom';
 import AddIcon from '@mui/icons-material/Add';
+import FFGSContent from '../Sidebar/Menu/FlashFloodGuidance/FFGSContent';
 
 export default function StatTabs() {
-  const [value, setValue] = useAtom(statTabValueAtom);
-
+  // const [value, setValue] = useAtom(statTabValueAtom);
+  const [value, setValue] = useState(2);
+  
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -24,16 +26,9 @@ export default function StatTabs() {
   ];
 
   return (
+    <>
     <Box 
       sx={{ 
-        maxWidth: {
-            xs: '100%',     
-            sm: 250,        
-            md: 450,        
-            lg: 450,       
-            xl: 700,  
-            xxl: 900
-        }, 
         bgcolor: '#2E2E2E'
       }}
     >
@@ -61,5 +56,15 @@ export default function StatTabs() {
         ))}
       </Tabs>
     </Box>
+      <Box>
+        {value === 0 && <></>} 
+        {value === 1 && <></>}
+        {value === 2 && <FFGSContent />}
+        {value === 3 && <></>}
+        {value === 4 && <></>}
+        {value === 5 && <></>}
+        {value === 6 && <></>}
+      </Box>
+    </>
   );
 }

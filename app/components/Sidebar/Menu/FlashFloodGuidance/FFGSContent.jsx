@@ -6,7 +6,7 @@ import FFGSRiskList from './FFGSRiskList'
 
 export default function FFGSContent() {
     return (
-        <Box p={2} sx={{ overflow: 'auto', height: '70vh'}}>
+        <Box p={2} sx={{ overflow: 'auto', height: '65vh'}}>
             <Typography>
                 FFGS Summary
             </Typography>
