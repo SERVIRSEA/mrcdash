@@ -1,71 +1,47 @@
-import React, { useState } from "react";
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Link from '@mui/material/Link';
+import React from 'react';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 
-export default function SupportingTools(){
-    const [expandedPanel, setExpandedPanel] = useState(false);
-    const [selectedIndex, setSelectedIndex] = React.useState();
-    const handleListItemClick = (event, index) => {
+const MyList = () => {
+    const [selectedIndex, setSelectedIndex] = React.useState(1);
+
+    const handleListItemClick = (event, index, url) => {
         setSelectedIndex(index);
+        window.open(url, '_blank');
     };
+
     return (
-        <Accordion
-            expanded={expandedPanel === 'panel2'} 
-            onChange={(event, isExpanded) => setExpandedPanel(isExpanded ? 'panel2' : false)}
-            sx={{
-                boxShadow: 'none', // Removes default shadow
-                '&:before': {
-                    height: '1px', // Removes the default top border
-                },
-                '&.Mui-expanded': {
-                    margin: '0',
-                }
-            }}
-        >
-            <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel2a-content"
-                id="panel1a-header"
-                sx={{
-                    borderTop: '1px solid rgba(0, 0, 0, 0.12)',
-                    borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
-                    backgroundColor: expandedPanel === 'panel2' ? '#bbdefb' : 'transparent',
-                    '&:hover': {
-                        backgroundColor: expandedPanel === 'panel2' ? '#bbdefb' : 'none' 
-                    }
-                }}
+        <List sx={{ fontSize: '12px' }}>
+            <ListItemButton
+                selected={selectedIndex === 0}
+                onClick={(event) => handleListItemClick(event, 0, 'https://rainstorms-servir.adpc.net/')}
             >
-                <Typography>SUPPORTING TOOLS</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-                <List>
-                    <ListItemButton
-                        selected={selectedIndex === 0}
-                        onClick={(event) => handleListItemClick(event, 0)}
-                    >
-                        <ListItemText primary="Rainstorm Tracker" />
-                    </ListItemButton>
-                    <ListItemButton
-                        selected={selectedIndex === 1}
-                        onClick={(event) => handleListItemClick(event, 1)}
-                    >
-                        <ListItemText primary="Mekong X-Ray" />
-                    </ListItemButton>
-                    <ListItemButton
-                        selected={selectedIndex === 2}
-                        onClick={(event) => handleListItemClick(event, 2)}
-                    >
-                        <ListItemText primary="RAT-Mekong" />
-                    </ListItemButton>
-                </List>
-            </AccordionDetails>
-        </Accordion>
-    )
-}
+                <ListItemText 
+                    primary="Rainstorm Tracker"
+                    primaryTypographyProps={{ style: { fontSize: '12px' } }} 
+                />
+            </ListItemButton>
+            <ListItemButton
+                selected={selectedIndex === 1}
+                onClick={(event) => handleListItemClick(event, 1, 'https://xray-servir.adpc.net/home')}
+            >
+                <ListItemText 
+                    primary="Mekong X-Ray"
+                    primaryTypographyProps={{ style: { fontSize: '12px' } }}
+                />
+            </ListItemButton>
+            <ListItemButton
+                selected={selectedIndex === 2}
+                onClick={(event) => handleListItemClick(event, 2, 'https://dev-ratmekong-servir.adpc.net/')}
+            >
+                <ListItemText 
+                    primary="RAT-Mekong"
+                    primaryTypographyProps={{ style: { fontSize: '12px' } }}
+                />
+            </ListItemButton>
+        </List>
+    );
+};
+
+export default MyList;

@@ -4,7 +4,7 @@ import { Card, CardContent, Typography, Table, TableRow, TableCell, Grid, TableB
 
 export default function RiskDetails({ entry }) {
     
-    console.log(entry);
+    // console.log(entry);
 
     const isoToCountryMap = {
         "THA": "Thailand",

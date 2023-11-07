@@ -12,6 +12,9 @@ import ReservoirsLayer from './Layers/ReservoirsLayer';
 import DroughtForecastLayers from './Sidebar/Menu/DroughtForecast/DroughtForecastLayers/DroughtForecastLayers';
 import CustomLayerControlButton from './Button/CustomLayerControlButton';
 import { currentBasemapAtom } from '../state/atom';
+import LMBLayer from './Layers/LMBLayer';
+import LMBRiverLayer from './Layers/LMBRiverLayer';
+import LMBSubProvinceLayer from './Layers/LMBSubProvinceLayer';
 
 export default function MapView(){
     
@@ -41,7 +44,10 @@ export default function MapView(){
             <CustomLayerControlButton />
             
             <DroughtForecastLayers />
-            
+            <LMBLayer />
+            <LMBRiverLayer />
+            <LMBSubProvinceLayer />
+
             <div 
                 style={{
                     position: 'absolute',

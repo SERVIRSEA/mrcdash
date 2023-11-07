@@ -8,13 +8,13 @@ const LegendItem = ({ color, label, hasBorder }) => (
         className="legend-color"
         style={{ 
           backgroundColor: color, 
-          width: "16px", 
-          height: "16px", 
+          width: "14px", 
+          height: "14px", 
           marginRight: "10px" ,
           border: hasBorder ? "1px solid black" : "none",
         }}
       ></div>
-      <Typography variant="body1" pl={2}>
+      <Typography variant="body2" pl={0} sx={{fontSize: "12px"}}>
         {label}
       </Typography>
     </Box>
@@ -22,9 +22,19 @@ const LegendItem = ({ color, label, hasBorder }) => (
 );
 
 const CustomLegend = ({ title, legendItems }) => (
-  <Box p={2} sx={{ maxHeight: '160px' }}>
-    <Typography sx={{ fontWeight: 'bold' }}>{title}</Typography>
-    <List>
+  <Box pt={1} pl={2} pr={2} pb={1}
+    sx={{ 
+      maxHeight: '160px', 
+      '&:not(:last-child)': { 
+        mb: 0,
+        mt:0,
+        pt: 0, 
+        pb: 0
+      } 
+    }}
+  >
+    <Typography sx={{ fontWeight: 'bold', fontSize: '12px' }}>{title}</Typography>
+    <List sx={{ mb: 0 }}>
       {legendItems.map((item, index) => (
         <LegendItem key={index} {...item} />
       ))}

@@ -44,7 +44,7 @@ export default function CreateList({ parsed_data, param }) {
             <Grid item xs={12}>
                 <Grid container spacing={2}>
                     {sortedData.map(entry => (
-                        <Grid item xs={6} key={entry.ISO}>
+                        <Grid item xs={6} key={entry.NAME_2}>
                             <Tooltip title={`Click to view details`} placement="top">
                                 <Paper elevation={0} sx={{ marginBottom: 1, padding: 1, cursor: 'pointer' }} onClick={() => displayDetail(entry)}>
                                     <Grid container alignItems="center">

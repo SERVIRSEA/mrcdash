@@ -17,20 +17,23 @@ export default function Legend() {
     return (
         <div style={{ position: 'absolute', right: '10px', bottom: '25px', background: '#eee', zIndex: 600, maxHeight: '180px', overflow: 'auto' }}>
             {cdiLegendVisible && (
-                <Box>
-                    <CDILegend />
-                </Box>
+                // <Box>
+                //     <CDILegend />
+                // </Box>
+                <CDILegend />
             )}
             {iswfLegendVisible && (
-                <Box>
-                    <ISWFLegend />
-                </Box>
+                <ISWFLegend />
+                // <Box>
+                //     <ISWFLegend />
+                // </Box>
             )}
             {spi1LegendVisible && (
-                <Box mt={(iswfLegendVisible) ? 6 : 0}>
-                    <SPI1Legend />
-                </Box>
+                <SPI1Legend />
+                // <Box mt={(iswfLegendVisible) ? 6 : 0}>
+                //     <SPI1Legend />
+                // </Box>
             )}
         </div>
     );
-  }
+}

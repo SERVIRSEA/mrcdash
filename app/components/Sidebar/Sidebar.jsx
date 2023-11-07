@@ -134,6 +134,25 @@ function Sidebar(){
                         <DroughtForecast />
                     </div>
                 );
+            case 4:
+                return (
+                    <div style={menuContentStyle}>
+                        <DatePanel />
+                        <DroughtForecast />
+                    </div>
+                );
+            case 5:
+                return (
+                    <div style={menuContentStyle}>
+                        
+                    </div>
+                );
+            case 6:
+                return (
+                    <div style={menuContentStyle}>
+                        <SupportingTools />
+                    </div>
+                );
 
             default:
                 return null;

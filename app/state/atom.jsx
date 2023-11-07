@@ -14,3 +14,8 @@ export const statTabContentRefsAtom = atom({});
 export const cdiLayerVisibilityAtom = atom(true)
 export const iswfLayerVisibilityAtom = atom(false)
 export const spi1LayerVisibilityAtom = atom(false)
+
+// Common layer control
+export const lmbLayerVisibilityAtom = atom(true);
+export const lmbRiverLayerVisibilityAtom = atom(true);
+export const lmbSubProvLayerVisibilityAtom = atom(false);
