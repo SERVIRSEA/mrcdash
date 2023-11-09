@@ -15,6 +15,7 @@ import { currentBasemapAtom } from '../state/atom';
 import LMBLayer from './Layers/LMBLayer';
 import LMBRiverLayer from './Layers/LMBRiverLayer';
 import LMBSubProvinceLayer from './Layers/LMBSubProvinceLayer';
+import FFGSMap from './Sidebar/Menu/FlashFloodGuidance/maps/FFGSMap';
 
 export default function MapView(){
     
@@ -43,11 +44,11 @@ export default function MapView(){
             {/* <ZoomControl position="topleft" /> */}
             <CustomLayerControlButton />
             
-            <DroughtForecastLayers />
+            {/* <DroughtForecastLayers /> */}
             <LMBLayer />
             <LMBRiverLayer />
             <LMBSubProvinceLayer />
-
+            <FFGSMap />
             <div 
                 style={{
                     position: 'absolute',

@@ -4,17 +4,17 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 
 const MyList = () => {
-    const [selectedIndex, setSelectedIndex] = React.useState(1);
+    // const [selectedIndex, setSelectedIndex] = React.useState(1);
 
     const handleListItemClick = (event, index, url) => {
-        setSelectedIndex(index);
+        // setSelectedIndex(index);
         window.open(url, '_blank');
     };
 
     return (
         <List sx={{ fontSize: '12px' }}>
             <ListItemButton
-                selected={selectedIndex === 0}
+                // selected={selectedIndex === 0}
                 onClick={(event) => handleListItemClick(event, 0, 'https://rainstorms-servir.adpc.net/')}
             >
                 <ListItemText 
@@ -23,7 +23,7 @@ const MyList = () => {
                 />
             </ListItemButton>
             <ListItemButton
-                selected={selectedIndex === 1}
+                // selected={selectedIndex === 1}
                 onClick={(event) => handleListItemClick(event, 1, 'https://xray-servir.adpc.net/home')}
             >
                 <ListItemText 
@@ -32,7 +32,7 @@ const MyList = () => {
                 />
             </ListItemButton>
             <ListItemButton
-                selected={selectedIndex === 2}
+                // selected={selectedIndex === 2}
                 onClick={(event) => handleListItemClick(event, 2, 'https://dev-ratmekong-servir.adpc.net/')}
             >
                 <ListItemText 

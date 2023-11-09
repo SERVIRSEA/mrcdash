@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { GeoJSON, Tooltip } from 'react-leaflet';
-import { GeoserverFetcher } from '../Fetchers/GeoserverFetcher';
-import { lmbSubProvLayerVisibilityAtom } from '@/app/state/atom';
+import { GeoJSON } from 'react-leaflet';
 import { useAtom } from 'jotai';
+import { GeoserverFetcher } from '../Fetchers/GeoserverFetcher';
+import { lmbSubProvLayerVisibilityAtom, subProvinceDataAtom } from '@/app/state/atom';
 
 const LMBSubProvinceLayer = () => {
-    const [data, setData] = useState(null);
+    const [data, setData] = useAtom(subProvinceDataAtom);
     const [isVisible, setIsVisible] = useAtom(lmbSubProvLayerVisibilityAtom);
 
     const params = {

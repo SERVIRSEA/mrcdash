@@ -35,7 +35,7 @@ export default function FFGSSummaryTable() {
     const [data06HrsCache, setData06HrsCache] = useAtom(ffgs06HrsDataCache);
     const [data12HrsCache, setData12HrsCache] = useAtom(ffgs12HrsDataCache);
     const [data24HrsCache, setData24HrsCache] = useAtom(ffgs24HrsDataCache);
-    const [data6, setData6] = useState([]);
+    // const [data6, setData6] = useState([]);
 
     const cacheKey = `${date}_${hrs}`;
     
@@ -52,11 +52,11 @@ export default function FFGSSummaryTable() {
             if(!data06HrsCache[cacheKey]) {
                 const data6 = await FFGSFetcher('get-stat-6hrs', params);
                 eventData6 = JSON.parse(data6);
-                setData6(eventData6);
+                // setData6(eventData6);
                 setData06HrsCache(prevCache => ({ ...prevCache, [cacheKey]: eventData6 }));
             } else {
                 eventData6 = data06HrsCache[cacheKey];
-                setData6(eventData6);
+                // setData6(eventData6);
             }
 
             if(!data12HrsCache[cacheKey]) {
@@ -89,7 +89,7 @@ export default function FFGSSummaryTable() {
 
     return (
         <>
-            <Table>
+            <Table size="small">
                 <TableHead>
                     <TableRow>
                         <TableCell sx={centeredText}>Country</TableCell>

@@ -124,7 +124,7 @@ function Sidebar(){
             case 2:
                 return (
                     <div style={menuContentStyle}>
-                        {/* <FlashFloodGuidance /> */}
+                        <FlashFloodGuidance />
                     </div>
                 );
             case 3:

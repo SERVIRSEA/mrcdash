@@ -19,3 +19,4 @@ export const spi1LayerVisibilityAtom = atom(false)
 export const lmbLayerVisibilityAtom = atom(true);
 export const lmbRiverLayerVisibilityAtom = atom(true);
 export const lmbSubProvLayerVisibilityAtom = atom(false);
+export const subProvinceDataAtom = atom(null);

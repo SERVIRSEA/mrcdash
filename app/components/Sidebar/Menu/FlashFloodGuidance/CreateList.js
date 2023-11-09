@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { Box, Typography, Grid, Paper, Tooltip } from '@mui/material';
 import RiskDetails from './RiskDetails';
+import { Modal } from '@mui/material';
+import { IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function CreateList({ parsed_data, param }) {
-    
+    const [modalOpen, setModalOpen] = useState(false);
+    const [popupData, setPopupData] = useState(null);
     const [selectedEntry, setSelectedEntry] = useState(null);
 
     const sortOrder = {
@@ -32,6 +37,22 @@ export default function CreateList({ parsed_data, param }) {
 
     const displayDetail = (entry) => {
         setSelectedEntry(entry);
+        setPopupData(entry);
+        setModalOpen(true);
+    };
+
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        maxWidth: 600,
+        // width: 600,
+        maxHeight: '60vh', 
+        bgcolor: 'background.paper',
+        boxShadow: 24,
+        p: 4,
+        overflowY: 'auto'
     };
 
     // Check if parsed_data is either not available or is empty
@@ -66,11 +87,46 @@ export default function CreateList({ parsed_data, param }) {
                     ))}
                 </Grid>
             </Grid>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
                 <Box>
                     <RiskDetails entry={selectedEntry} />
                 </Box>
-            </Grid>
+            </Grid> */}
+            <Modal
+                open={modalOpen}
+                onClose={() => setModalOpen(false)}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <IconButton
+                        aria-label="close"
+                        onClick={() => setModalOpen(false)}
+                        sx={{
+                            position: 'absolute',
+                            right: 8,
+                            top: 8,
+                            color: (theme) => theme.palette.grey[500],
+                        }}
+                    >
+                        <CloseIcon />
+                    </IconButton>
+                    {popupData ? (
+                        <RiskDetails entry={popupData}/>
+                        ) : (
+                        <Box
+                            sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            height: '100%', // Adjust the height as needed
+                            }}
+                        >
+                            <CircularProgress />
+                        </Box>
+                    )}
+                </Box>
+            </Modal>
         </Grid>
     );
 }

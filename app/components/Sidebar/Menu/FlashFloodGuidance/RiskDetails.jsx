@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, CardContent, Typography, Table, TableRow, TableCell, Grid, TableBody, TableHead } from '@mui/material';
 
-
 export default function RiskDetails({ entry }) {
     
     // console.log(entry);
@@ -25,10 +24,10 @@ export default function RiskDetails({ entry }) {
     return (
         <Card elevation={0} sx={{ bgcolor: 'transparent' }}>
             <CardContent>
-                <Typography variant="h6" component="div" sx={{fontWeight: 'bold'}}>
+                <Typography variant="body1" component="div" sx={{fontWeight: 'bold'}}>
                     Risk Level: {entry.Alert_6Hrs}
                 </Typography>
-                <Table>
+                <Table size='small'>
                     <TableBody>
                         <TableRow>
                             <TableCell>Country</TableCell>
@@ -47,7 +46,7 @@ export default function RiskDetails({ entry }) {
                         </TableRow>
                     </TableBody>
                 </Table>
-                <Typography variant="h6" component="div" pt={3}>
+                <Typography variant="body1" component="div" pt={3} sx={{fontWeight: 'bold'}}>
                     Social Vulnerability
                 </Typography>
                 <Typography variant="body2" component="div">
@@ -59,7 +58,8 @@ export default function RiskDetails({ entry }) {
                     </Grid>
                     <Grid item xs={9}>
                         <Typography variant="body1" component="div" sx={{fontWeight: 'bold'}}>
-                            Total Population <br /> {totalPop}
+                            Total Population <br /> 
+                            <span style={{ color: '#2196f3', fontSize: '1.5rem' }}>{totalPop}</span>
                         </Typography>
                     </Grid>
                 </Grid>
@@ -69,9 +69,10 @@ export default function RiskDetails({ entry }) {
                     </Grid>
                     <Grid item xs={9}>
                         <Typography variant="body1" component="div" sx={{fontWeight: 'bold'}}>
-                            Female Population <br /> {totalFemale}
+                            Female Population <br /> 
+                            <span style={{ color: '#9c27b0', fontSize: '1.25rem' }}>{totalFemale}</span>
                         </Typography>
-                        <Table>
+                        <Table size='small'>
                             <TableHead>
                                 <TableRow>
                                     <TableCell>Age</TableCell>
@@ -104,9 +105,10 @@ export default function RiskDetails({ entry }) {
                     </Grid>
                     <Grid item xs={9}>
                         <Typography variant="body1" component="div" sx={{fontWeight: 'bold'}}>
-                            Male Population <br /> {totalMale}
+                            Male Population <br /> 
+                            <span style={{ color: '#2979ff', fontSize: '1.25rem' }}>{totalMale}</span>
                         </Typography>
-                        <Table>
+                        <Table size='small'>
                             <TableHead>
                                 <TableRow>
                                     <TableCell>Age</TableCell>
@@ -133,7 +135,7 @@ export default function RiskDetails({ entry }) {
                         </Table>
                     </Grid>
                 </Grid>
-                <Typography variant="h6" component="div" pt={3}>
+                <Typography variant="body1" component="div" pt={3} sx={{ fontWeight: 'bold'}}>
                     Physical Vulnerability
                 </Typography>
                 <Typography variant="body2" component="div">
@@ -144,7 +146,7 @@ export default function RiskDetails({ entry }) {
                         <img src="http://203.146.112.243/static/img/road.png" width={70} alt="road" />
                     </Grid>
                     <Grid item xs={9}>
-                        <Table>
+                        <Table size='small'>
                             <TableHead>
                                 <TableRow>
                                     <TableCell>Road Type</TableCell>
@@ -176,19 +178,19 @@ export default function RiskDetails({ entry }) {
                         </Table>
                     </Grid>
                 </Grid>
-                <Typography variant="body2" component="div" pt={3}>
+                <Typography variant="body2" component="div" pt={3} pb={0} mb={0}>
                     TOTAL HOSPITAL
                 </Typography>
-                <Grid container spacing={2} pt={3}>
-                    <Grid item xs={3}>
+                <Grid container spacing={2} pt={3} pb={0} mb={0}>
+                    <Grid item xs={3} mt={0}>
                         <img src="http://203.146.112.243/static/img/hospital.png" width={70} alt="hospital" />
                     </Grid>
-                    <Grid item xs={9}>
+                    <Grid item xs={9} mt={2}>
                         {entry.Hospital || '---'}
                         <br /> Hospital
                     </Grid>
                 </Grid>
-                <Typography variant="h6" component="div" pt={3}>
+                <Typography variant="body1" component="div" pt={3} sx={{ fontWeight: 'bold'}}>
                     Economic Vulnerability
                 </Typography>
                 <Grid container spacing={2} pt={3}>
@@ -196,7 +198,7 @@ export default function RiskDetails({ entry }) {
                         <img src="http://203.146.112.243/static/img/gdp.jpg" width={70} alt="economic vulverability" />
                     </Grid>
                     <Grid item xs={9}>
-                        <Table>
+                        <Table size='small'>
                             <TableHead>
                                 <TableRow>
                                     <TableCell colSpan={3} sx={{ fontWeight: 'bold' }}>
