@@ -21,10 +21,11 @@ const LegendItem = ({ color, label, hasBorder }) => (
   </ListItem>
 );
 
-const CustomLegend = ({ title, legendItems }) => (
+const CustomLegend = ({ title, legendItems, showTitle = true }) => (
   <Box pt={1} pl={2} pr={2} pb={1}
     sx={{ 
       maxHeight: '160px', 
+      maxWidth: '200px',
       '&:not(:last-child)': { 
         mb: 0,
         mt:0,
@@ -33,7 +34,20 @@ const CustomLegend = ({ title, legendItems }) => (
       } 
     }}
   >
-    <Typography sx={{ fontWeight: 'bold', fontSize: '12px' }}>{title}</Typography>
+    {showTitle && (
+      <Typography 
+        sx={{ 
+          fontWeight: 'bold', 
+          fontSize: '12px', 
+          maxWidth: '100%', 
+          wordBreak: 'break-all', 
+          whiteSpace: 'normal',
+          display: 'inline-block'
+        }}
+      >
+        {title}
+      </Typography>
+    )}
     <List sx={{ mb: 0 }}>
       {legendItems.map((item, index) => (
         <LegendItem key={index} {...item} />

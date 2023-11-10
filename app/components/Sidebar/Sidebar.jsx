@@ -10,11 +10,14 @@ import { sideNavContentWidthAtom } from '@/app/state/atom';
 import DroughtForecast from './Menu/DroughtForecast/DroughtForecast';
 import DatePanel from '../DatePanel';
 import FlashFloodGuidance from './Menu/FlashFloodGuidance/FlashFloodGuidance';
+import { activeMenuAtom } from '@/app/state/atom';
+import { cdiLayerVisibilityAtom } from '@/app/state/atom';
+import { ffgsLayerVisibility } from './Menu/FlashFloodGuidance/state/FFGSAtom';
 
 const menuTitleAtom = atom("")
 const activeTabAtom = atom("block");
-const activeAtom = atom(3);
-const activeTabPanelAtom = atom(3);
+const activeAtom = atom(2);
+const activeTabPanelAtom = atom(2);
 
 function Sidebar(){
     const [sideNavWidth, setSideNavWidth] = useAtom(sideNavContentWidthAtom)
@@ -22,10 +25,14 @@ function Sidebar(){
     const [selectedIndex, setSelectedIndex] = useAtom(activeAtom);
     const [navContent, setActiveNavContent] = useAtom(activeTabPanelAtom);
     const [menuTitle, setMenuTitle] = useAtom(menuTitleAtom);
+    const [, setLegend] = useAtom(activeMenuAtom);
+    const [, setCDILayerVisibility] = useAtom(cdiLayerVisibilityAtom);
+    const [, setFFGSLayerVisibility] = useAtom(ffgsLayerVisibility);
 
     useEffect(()=>{
         const menuTitles = ["TODAY", "RIVER FORECAST", "FLASH FLOOD GUIDANCE", "DROUGHT FORECAST", "MEDIUM & LONG RANGE FORECAST", "RAINFALL OBSERVATION", "SUPPORTING TOOLS"];
         setMenuTitle(menuTitles[selectedIndex] || '');
+        setLegend(selectedIndex);
     }, [])
     
     
@@ -100,6 +107,13 @@ function Sidebar(){
         setSideNavWidth('300px');
         const menuTitles = ["TODAY", "RIVER FORECAST", "FLASH FLOOD GUIDANCE", "DROUGHT FORECAST", "MEDIUM & LONG RANGE FORECAST", "RAINFALL OBSERVATION", "SUPPORTING TOOLS"];
         setMenuTitle(menuTitles[index] || '');
+        setLegend(index);
+
+        if (index == 2 ){
+            setFFGSLayerVisibility(true);
+        } else if ( index ==  3 ){
+            setCDILayerVisibility(true);
+        }
     };
 
     const handleCloseClick = () => {

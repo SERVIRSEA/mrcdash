@@ -44,7 +44,7 @@ export default function MapView(){
             {/* <ZoomControl position="topleft" /> */}
             <CustomLayerControlButton />
             
-            {/* <DroughtForecastLayers /> */}
+            <DroughtForecastLayers />
             <LMBLayer />
             <LMBRiverLayer />
             <LMBSubProvinceLayer />

@@ -1,39 +1,14 @@
 import { useAtom } from "jotai"
-import CDILegend from "./Legend/CDILegend"
-import ISWFLegend from "./Legend/ISWFLegend"
-import SPI1Legend from "./Legend/SPI1Legend"
-import { 
-    cdiLayerVisibilityAtom,
-    iswfLayerVisibilityAtom,
-    spi1LayerVisibilityAtom
-} from "../state/atom"
-import { Box } from "@mui/material"
+import { activeMenuAtom } from "../state/atom"
+import DroughtLegend from "./Legend/DroughtLegend"
+import FFGSLegend from "./Legend/FFGSLegend";
 
 export default function Legend() {
-    const [cdiLegendVisible] = useAtom(cdiLayerVisibilityAtom);
-    const [iswfLegendVisible] = useAtom(iswfLayerVisibilityAtom);
-    const [spi1LegendVisible] = useAtom(spi1LayerVisibilityAtom);
-  
+    const [isVisible] = useAtom(activeMenuAtom);
     return (
         <div style={{ position: 'absolute', right: '10px', bottom: '25px', background: '#eee', zIndex: 600, maxHeight: '180px', overflow: 'auto' }}>
-            {cdiLegendVisible && (
-                // <Box>
-                //     <CDILegend />
-                // </Box>
-                <CDILegend />
-            )}
-            {iswfLegendVisible && (
-                <ISWFLegend />
-                // <Box>
-                //     <ISWFLegend />
-                // </Box>
-            )}
-            {spi1LegendVisible && (
-                <SPI1Legend />
-                // <Box mt={(iswfLegendVisible) ? 6 : 0}>
-                //     <SPI1Legend />
-                // </Box>
-            )}
+            {isVisible === 3 && <DroughtLegend />}
+            {isVisible === 2 && <FFGSLegend />}
         </div>
     );
 }

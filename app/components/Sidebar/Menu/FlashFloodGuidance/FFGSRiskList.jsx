@@ -9,6 +9,7 @@ import {
 } from './state/FFGSAtom';
 import { Button, Box } from '@mui/material';
 import CreateList from './CreateList';
+import { ffgsParamSelection } from './state/FFGSAtom';
 
 export default function FFGSRiskList() {
     const [date] = useAtom(ffgsDate);
@@ -18,6 +19,8 @@ export default function FFGSRiskList() {
     const [data24] = useAtom(ffgs24HrsDataCache);
     const [filteredData, setFilteredData] = useState([]);
     const [activeButton, setActiveButton] = useState(0);
+    // const [param, setParam] = useState('6hrs');
+    const [param, setParam] = useAtom(ffgsParamSelection);
 
     const cacheKey = `${date}_${hrs}`;
 
@@ -35,6 +38,9 @@ export default function FFGSRiskList() {
 
     const handleClick = (index)=> {
         setActiveButton(index);
+        if (index === 0) setParam('FFG06');
+        else if (index === 1) setParam('FFR12');
+        else if (index === 2) setParam('FFR24');
     }
 
     return (
@@ -58,7 +64,7 @@ export default function FFGSRiskList() {
                     </Button>
                 ))}
             </Box>
-            {filteredData && <CreateList parsed_data={filteredData} param="6hrs" />}
+            {filteredData && <CreateList parsed_data={filteredData} selectedParam={param} />}
         </>
     );
 }

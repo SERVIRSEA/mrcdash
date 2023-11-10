@@ -11,7 +11,7 @@ export const statTabValueAtom = atom(0);
 export const statTabContentRefsAtom = atom({});
 
 // Drought Forecast Menu
-export const cdiLayerVisibilityAtom = atom(true)
+export const cdiLayerVisibilityAtom = atom(false)
 export const iswfLayerVisibilityAtom = atom(false)
 export const spi1LayerVisibilityAtom = atom(false)
 
@@ -20,3 +20,6 @@ export const lmbLayerVisibilityAtom = atom(true);
 export const lmbRiverLayerVisibilityAtom = atom(true);
 export const lmbSubProvLayerVisibilityAtom = atom(false);
 export const subProvinceDataAtom = atom(null);
+
+// Legend control atom
+export const activeMenuAtom = atom(0);
