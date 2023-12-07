@@ -8,7 +8,6 @@ import { MapContainer, TileLayer, LayerGroup, useMap, LayersControl, ZoomControl
 import 'leaflet/dist/leaflet.css';
 import { expandAtom } from '../state/atom';
 import Legend from './Legend';
-import ReservoirsLayer from './Layers/ReservoirsLayer';
 import DroughtForecastLayers from './Sidebar/Menu/DroughtForecast/DroughtForecastLayers/DroughtForecastLayers';
 import CustomLayerControlButton from './Button/CustomLayerControlButton';
 import { currentBasemapAtom } from '../state/atom';
@@ -16,9 +15,9 @@ import LMBLayer from './Layers/LMBLayer';
 import LMBRiverLayer from './Layers/LMBRiverLayer';
 import LMBSubProvinceLayer from './Layers/LMBSubProvinceLayer';
 import FFGSMap from './Sidebar/Menu/FlashFloodGuidance/maps/FFGSMap';
+import ReservoirLayer from './Sidebar/Menu/SupportingTools/RAT/Layers/ReservoirLayer';
 
 export default function MapView(){
-    
     const [isExpanded, setIsExpanded] = useAtom(expandAtom);
     const [currentBasemap] = useAtom(currentBasemapAtom);
 
@@ -49,6 +48,7 @@ export default function MapView(){
             <LMBRiverLayer />
             <LMBSubProvinceLayer />
             <FFGSMap />
+            <ReservoirLayer />
             <div 
                 style={{
                     position: 'absolute',
@@ -73,10 +73,7 @@ export default function MapView(){
                         color: 'black',  
                         '&:hover': {
                             backgroundColor: '#E0E0E0' 
-                        },
-                        // '&.MuiButton-root': {
-                        //     width: '10px !important',
-                        // },
+                        }
                     }}
                     onClick={() => setIsExpanded(!isExpanded)}
                 >

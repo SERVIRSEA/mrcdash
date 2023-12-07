@@ -10,9 +10,10 @@ import { sideNavContentWidthAtom } from '@/app/state/atom';
 import DroughtForecast from './Menu/DroughtForecast/DroughtForecast';
 import DatePanel from '../DatePanel';
 import FlashFloodGuidance from './Menu/FlashFloodGuidance/FlashFloodGuidance';
-import { activeMenuAtom } from '@/app/state/atom';
+import { activeMenuAtom, statTabValueAtom } from '@/app/state/atom';
 import { cdiLayerVisibilityAtom } from '@/app/state/atom';
 import { ffgsLayerVisibility } from './Menu/FlashFloodGuidance/state/FFGSAtom';
+import { reservoirVisibilityAtom } from '@/app/state/atom';
 
 const menuTitleAtom = atom("")
 const activeTabAtom = atom("block");
@@ -28,7 +29,9 @@ function Sidebar(){
     const [, setLegend] = useAtom(activeMenuAtom);
     const [, setCDILayerVisibility] = useAtom(cdiLayerVisibilityAtom);
     const [, setFFGSLayerVisibility] = useAtom(ffgsLayerVisibility);
-
+    const [, setReservoirVisibility] = useAtom(reservoirVisibilityAtom);
+    const [, setActiveStat] = useAtom(statTabValueAtom);
+    
     useEffect(()=>{
         const menuTitles = ["TODAY", "RIVER FORECAST", "FLASH FLOOD GUIDANCE", "DROUGHT FORECAST", "MEDIUM & LONG RANGE FORECAST", "RAINFALL OBSERVATION", "SUPPORTING TOOLS"];
         setMenuTitle(menuTitles[selectedIndex] || '');
@@ -108,11 +111,14 @@ function Sidebar(){
         const menuTitles = ["TODAY", "RIVER FORECAST", "FLASH FLOOD GUIDANCE", "DROUGHT FORECAST", "MEDIUM & LONG RANGE FORECAST", "RAINFALL OBSERVATION", "SUPPORTING TOOLS"];
         setMenuTitle(menuTitles[index] || '');
         setLegend(index);
+        setActiveStat(index);
 
         if (index == 2 ){
             setFFGSLayerVisibility(true);
         } else if ( index ==  3 ){
             setCDILayerVisibility(true);
+        } else if ( index == 6 ) {
+            setReservoirVisibility(true);
         }
     };
 
@@ -151,8 +157,7 @@ function Sidebar(){
             case 4:
                 return (
                     <div style={menuContentStyle}>
-                        <DatePanel />
-                        <DroughtForecast />
+                        
                     </div>
                 );
             case 5:

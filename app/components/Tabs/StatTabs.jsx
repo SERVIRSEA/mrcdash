@@ -6,10 +6,11 @@ import Box from '@mui/material/Box';
 import { statTabValueAtom } from '@/app/state/atom';
 import AddIcon from '@mui/icons-material/Add';
 import FFGSContent from '../Sidebar/Menu/FlashFloodGuidance/FFGSContent';
+import ReservoirTable from '../Sidebar/Menu/SupportingTools/RAT/Table/ReservoirTable';
 
 export default function StatTabs() {
-  // const [value, setValue] = useAtom(statTabValueAtom);
-  const [value, setValue] = useState(2);
+  const [value, setValue] = useAtom(statTabValueAtom);
+  // const [value, setValue] = useState(2);
   
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -40,7 +41,7 @@ export default function StatTabs() {
         aria-label="scrollable auto tabs example"
         sx={{
           '& .MuiTabs-scrollButtons': {
-            color: 'white', // Changing the color of the scroll buttons to white
+            color: 'white', 
           },
         }}
       >
@@ -63,7 +64,7 @@ export default function StatTabs() {
         {value === 3 && <></>}
         {value === 4 && <></>}
         {value === 5 && <></>}
-        {value === 6 && <></>}
+        {value === 6 && <ReservoirTable />}
       </Box>
     </>
   );

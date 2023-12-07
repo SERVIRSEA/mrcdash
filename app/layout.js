@@ -8,7 +8,7 @@ export const metadata = {
   title: 'Dashboard | MRC',
   description: 'Flood and Drought Monitoring Dashboard',
   icons: {
-    icon: 'assets/images/logos/MRC-logo-white.svg',
+    icon: '/dash/assets/images/logos/MRC-logo-white.svg',
   },
 }
 
@@ -17,9 +17,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      <ThemeProvider theme={theme}>
-        {children}
-      </ThemeProvider>
+        <ThemeProvider theme={theme}>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

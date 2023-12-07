@@ -3,13 +3,13 @@ import axios from 'axios';
 export const reservoirDataFetcher = async (params) => {
     try {
         const apiInstance = axios.create({
-            baseURL: 'http://127.0.0.1:8000/api',
+            baseURL: process.env.NEXT_PUBLIC_RAT_API_URL,
             headers: {
-                Authorization: process.env.NEXT_PUBLIC_API_KEY,
+                Authorization: process.env.NEXT_PUBLIC_RAT_API_KEY,
             },
         });
 
-        const response = await apiInstance.get('/data/', { params });
+        const response = await apiInstance.get('/ratmekong/', { params });
         return response.data;
     } catch (error) {
         console.error('Error fetching data:', error);
