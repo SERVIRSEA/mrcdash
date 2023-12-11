@@ -8,7 +8,9 @@ import { FaArrowUp, FaArrowDown, FaRegSquare } from 'react-icons/fa';
 import ReservoirModal from '../Modal/ReservoirModal';
 import CircularProgress from '@mui/material/CircularProgress';
 
+
 const ReservoirTable = () => {
+    const [hoveredRow, setHoveredRow] = useState(null);
     const [data] = useAtom(reservoirDataAtom);
     const [sarea, setSarea] = useState([]);
     const [rid, setRID] = useState('');
@@ -101,10 +103,19 @@ const ReservoirTable = () => {
                             <TableRow 
                                 key={index} 
                                 onClick={() => handleRowClick(row.id)}
-                                style={{ cursor: 'pointer' }} // Optional for visual feedback
+                                style={{ cursor: 'pointer'}} 
                             >
                                 <TableCell component="th" scope="row">
-                                    {row.name}
+                                    <span
+                                        onMouseEnter={() => setHoveredRow(row.id)}
+                                        onMouseLeave={() => setHoveredRow(null)}
+                                        style={{
+                                            color: hoveredRow === row.id ? 'red' : 'inherit',
+                                            fontWeight: hoveredRow === row.id ? 'bold' : 'normal',
+                                        }}
+                                    >
+                                        {row.name}
+                                    </span>
                                 </TableCell>
                                 <TableCell align="center">
                                     <ReactCountryFlag 

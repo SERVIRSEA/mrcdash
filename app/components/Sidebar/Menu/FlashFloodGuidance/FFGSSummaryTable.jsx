@@ -5,6 +5,7 @@ import { Table, TableBody, TableRow, TableHead, TableCell } from "@mui/material"
 import { 
     ffgsDate, 
     ffgsHrs,
+    ffgsCountry,
     ffgs06HrsDataCache,
     ffgs12HrsDataCache,
     ffgs24HrsDataCache,
@@ -31,6 +32,7 @@ function FlagComponent({ countryCode }) {
 export default function FFGSSummaryTable() {
     const [date] = useAtom(ffgsDate);
     const [hrs] = useAtom(ffgsHrs);
+    const [country] = useAtom(ffgsCountry);
     const [eventData, setEventData] = useState({});
     const [data06HrsCache, setData06HrsCache] = useAtom(ffgs06HrsDataCache);
     const [data12HrsCache, setData12HrsCache] = useAtom(ffgs12HrsDataCache);
@@ -95,7 +97,7 @@ export default function FFGSSummaryTable() {
                         <TableCell sx={centeredText}>Country</TableCell>
                         <TableCell sx={centeredText}>Next 06 HRS <br></br>(No. Provinces)</TableCell>
                         <TableCell sx={centeredText}>Next 12 HRS <br></br>(No. Provinces)</TableCell>
-                        <TableCell sx={centeredText}>Next 24 HRS <br></br>(No. Provinces)</TableCell>
+                        <TableCell sx={centeredText}>Next 24 HRS <br></br>(No. Districts)</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

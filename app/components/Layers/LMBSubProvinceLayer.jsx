@@ -34,12 +34,30 @@ const LMBSubProvinceLayer = () => {
             fillColor: '#ffcc33',
         };
     };
+
+    const highlightFeature = (e) => {
+        const layer = e.target;
+        layer.setStyle({
+            weight: 3,
+            color: '#ff0000', // Red color for the boundary
+            fillOpacity: 0.7
+        });
+    };
+
+    const resetHighlight = (e) => {
+        const layer = e.target;
+        layer.setStyle(defaultStyle());
+    };
     
     const onEachFeature = (feature, layer) => {
         if (feature.properties) {
             const tooltipContent = `District: ${feature.properties.NAME_2}<br>Province: ${feature.properties.NAME_1}`;
             layer.bindTooltip(tooltipContent);
         }
+        layer.on({
+            mouseover: highlightFeature,
+            mouseout: resetHighlight
+        });
     };
 
     return (

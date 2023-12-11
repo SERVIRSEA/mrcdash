@@ -28,6 +28,7 @@ export const activeMenuAtom = atom(0);
 // Reservoir
 export const reservoirAtom = atom('Lam_Pao');
 export const reservoirVisibilityAtom = atom(false);
+export const infoDataAtom = atom({});
 export const inflowDataAtom = atom({});
 export const outflowDataAtom = atom({});
 export const reservoirDataAtom = atom(null);
