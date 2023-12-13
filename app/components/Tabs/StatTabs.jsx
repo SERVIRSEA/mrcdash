@@ -7,6 +7,7 @@ import { statTabValueAtom } from '@/app/state/atom';
 import AddIcon from '@mui/icons-material/Add';
 import FFGSContent from '../Sidebar/Menu/FlashFloodGuidance/FFGSContent';
 import ReservoirTable from '../Sidebar/Menu/SupportingTools/RAT/Table/ReservoirTable';
+import RainfallContent from '../Sidebar/Menu/RainfallObservation/RainfallContent';
 
 export default function StatTabs() {
   const [value, setValue] = useAtom(statTabValueAtom);
@@ -63,7 +64,7 @@ export default function StatTabs() {
         {value === 2 && <FFGSContent />}
         {value === 3 && <></>}
         {value === 4 && <></>}
-        {value === 5 && <></>}
+        {value === 5 && <RainfallContent />}
         {value === 6 && <ReservoirTable />}
       </Box>
     </>

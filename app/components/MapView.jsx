@@ -16,6 +16,8 @@ import LMBRiverLayer from './Layers/LMBRiverLayer';
 import LMBSubProvinceLayer from './Layers/LMBSubProvinceLayer';
 import FFGSMap from './Sidebar/Menu/FlashFloodGuidance/maps/FFGSMap';
 import ReservoirLayer from './Sidebar/Menu/SupportingTools/RAT/Layers/ReservoirLayer';
+import RainfallLayer from './Sidebar/Menu/RainfallObservation/Layers/RainfallLayer';
+import RiverForecastLayer from './Sidebar/Menu/RiverForecast/Layers/RiverForecastLayer';
 
 export default function MapView(){
     const [isExpanded, setIsExpanded] = useAtom(expandAtom);
@@ -49,6 +51,8 @@ export default function MapView(){
             <LMBSubProvinceLayer />
             <FFGSMap />
             <ReservoirLayer />
+            <RainfallLayer />
+            <RiverForecastLayer />
             <div 
                 style={{
                     position: 'absolute',

@@ -14,6 +14,11 @@ import { activeMenuAtom, statTabValueAtom } from '@/app/state/atom';
 import { cdiLayerVisibilityAtom } from '@/app/state/atom';
 import { ffgsLayerVisibility } from './Menu/FlashFloodGuidance/state/FFGSAtom';
 import { reservoirVisibilityAtom } from '@/app/state/atom';
+import RainfallObservation from './Menu/RainfallObservation/RainfallObservation';
+import { rainfallVisibilityAtom } from './Menu/RainfallObservation/state/RainfallAtom';
+import RiverForecast from './Menu/RiverForecast/RiverForecast';
+import { rfVisibilityAtom } from './Menu/RiverForecast/state/RiverForecastAtom';
+
 
 const menuTitleAtom = atom("")
 const activeTabAtom = atom("block");
@@ -31,7 +36,9 @@ function Sidebar(){
     const [, setFFGSLayerVisibility] = useAtom(ffgsLayerVisibility);
     const [, setReservoirVisibility] = useAtom(reservoirVisibilityAtom);
     const [, setActiveStat] = useAtom(statTabValueAtom);
-    
+    const [, setRainfallObsVisibility] = useAtom(rainfallVisibilityAtom);
+    const [, setRFVisibility] = useAtom(rfVisibilityAtom)
+
     useEffect(()=>{
         const menuTitles = ["TODAY", "RIVER FORECAST", "FLASH FLOOD GUIDANCE", "DROUGHT FORECAST", "MEDIUM & LONG RANGE FORECAST", "RAINFALL OBSERVATION", "SUPPORTING TOOLS"];
         setMenuTitle(menuTitles[selectedIndex] || '');
@@ -113,10 +120,14 @@ function Sidebar(){
         setLegend(index);
         setActiveStat(index);
 
-        if (index == 2 ){
+        if (index == 1){
+            setRFVisibility(true);
+        }else if (index == 2 ){
             setFFGSLayerVisibility(true);
         } else if ( index ==  3 ){
             setCDILayerVisibility(true);
+        } else if (index == 5){
+            setRainfallObsVisibility(true);
         } else if ( index == 6 ) {
             setReservoirVisibility(true);
         }
@@ -138,7 +149,7 @@ function Sidebar(){
             case 1:
                 return (
                     <div style={menuContentStyle}>
-                        
+                        <RiverForecast />
                     </div>
                 );
             case 2:
@@ -163,7 +174,7 @@ function Sidebar(){
             case 5:
                 return (
                     <div style={menuContentStyle}>
-                        
+                        <RainfallObservation />
                     </div>
                 );
             case 6:
