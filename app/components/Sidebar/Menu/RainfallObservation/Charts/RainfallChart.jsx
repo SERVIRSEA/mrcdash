@@ -10,7 +10,7 @@ function RainfallChart({ count, totalEvents, eventColor, totalEventsColor }) {
             const chart = chartRef.current.chart;
     
             chart.tooltip.options.formatter = function () {
-                return `<b>${count}</b> of <b>${totalEvents}</b> stations (${this.percentage.toFixed(1)}%)`;
+                return `<b>${count}</b> of <b>${totalEvents}</b> stations (${((count / totalEvents) * 100).toFixed(1)}%)`;
             };
     
             const chartCenterX = chart.plotWidth / 2.1;

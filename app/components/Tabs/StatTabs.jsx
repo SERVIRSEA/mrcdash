@@ -8,6 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import FFGSContent from '../Sidebar/Menu/FlashFloodGuidance/FFGSContent';
 import ReservoirTable from '../Sidebar/Menu/SupportingTools/RAT/Table/ReservoirTable';
 import RainfallContent from '../Sidebar/Menu/RainfallObservation/RainfallContent';
+import RiverForecastContent from '../Sidebar/Menu/RiverForecast/RiverForecastContent';
 
 export default function StatTabs() {
   const [value, setValue] = useAtom(statTabValueAtom);
@@ -60,7 +61,7 @@ export default function StatTabs() {
     </Box>
       <Box>
         {value === 0 && <></>} 
-        {value === 1 && <></>}
+        {value === 1 && <RiverForecastContent />}
         {value === 2 && <FFGSContent />}
         {value === 3 && <></>}
         {value === 4 && <></>}
