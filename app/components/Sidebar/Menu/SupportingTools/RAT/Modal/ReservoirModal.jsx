@@ -82,7 +82,7 @@ const ReservoirModal = ({ open, onClose, reservoirId }) => {
             fetchInflowData();
             fetchOutflowData();
         }
-    }, []);
+    }, [reservoirId, setInflow, setInfo, setOutflow]);
 
     return (
         <Modal

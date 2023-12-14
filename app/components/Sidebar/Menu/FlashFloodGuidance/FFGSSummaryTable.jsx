@@ -86,7 +86,7 @@ export default function FFGSSummaryTable() {
             // console.log(organizedData)
         }
         fetchData();
-    }, [date, hrs]);
+    }, [date, hrs, cacheKey, data06HrsCache, data12HrsCache, data24HrsCache, setData06HrsCache, setData12HrsCache, setData24HrsCache]);
     
 
     return (

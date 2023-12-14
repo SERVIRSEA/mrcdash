@@ -43,7 +43,7 @@ function Sidebar(){
         const menuTitles = ["TODAY", "RIVER FORECAST", "FLASH FLOOD GUIDANCE", "DROUGHT FORECAST", "MEDIUM & LONG RANGE FORECAST", "RAINFALL OBSERVATION", "SUPPORTING TOOLS"];
         setMenuTitle(menuTitles[selectedIndex] || '');
         setLegend(selectedIndex);
-    }, [])
+    }, [selectedIndex, setLegend, setMenuTitle])
     
     
     const sidebarStyle = {

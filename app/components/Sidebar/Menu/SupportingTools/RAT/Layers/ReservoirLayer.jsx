@@ -22,7 +22,7 @@ const ReservoirLayer = () => {
             .then(response => response.json())
             .then(data => setMapData(data))
             .catch(error => console.error('Error fetching GeoJSON:', error));
-    }, []); 
+    }, [setMapData]); 
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,7 +37,7 @@ const ReservoirLayer = () => {
             setSarea(data)
         };
         fetchData();
-    }, []);
+    }, [setSarea]);
 
     const pointStyle = {
         radius: 6, 

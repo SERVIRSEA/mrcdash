@@ -34,7 +34,7 @@ function RainfallChart({ count, totalEvents, eventColor, totalEventsColor }) {
                 y: chartCenterY - textBBox.height / 2,
             });
         }
-    }, [count]);
+    }, [count, totalEvents]);
 
     const options = {
         chart: {

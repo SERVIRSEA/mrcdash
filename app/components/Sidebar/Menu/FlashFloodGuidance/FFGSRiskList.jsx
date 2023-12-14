@@ -24,10 +24,6 @@ export default function FFGSRiskList() {
 
     const cacheKey = `${date}_${hrs}`;
 
-    useEffect(() => {
-        updateFilteredData(activeButton);
-    }, [data6, data12, data24, cacheKey, activeButton]);
-
     const updateFilteredData = (index) => {
         let selectedData;
         if (index === 0) selectedData = data6[cacheKey];
@@ -35,6 +31,10 @@ export default function FFGSRiskList() {
         else if (index === 2) selectedData = data24[cacheKey];
         setFilteredData(selectedData);
     }
+
+    useEffect(() => {
+        updateFilteredData(activeButton);
+    }, [data6, data12, data24, cacheKey, activeButton]);
 
     const handleClick = (index)=> {
         setActiveButton(index);

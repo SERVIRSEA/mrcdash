@@ -26,7 +26,7 @@ const RiverForecastContent = () => {
                         <TableHead>
                             <TableRow>
                                 <TableCell>Station Name</TableCell>
-                                <TableCell>This Week's Trend</TableCell>
+                                <TableCell>This Week&apos;s Trend</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>

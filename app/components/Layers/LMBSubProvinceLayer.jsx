@@ -7,16 +7,15 @@ import { lmbSubProvLayerVisibilityAtom, subProvinceDataAtom } from '@/app/state/
 const LMBSubProvinceLayer = () => {
     const [data, setData] = useAtom(subProvinceDataAtom);
     const [isVisible, setIsVisible] = useAtom(lmbSubProvLayerVisibilityAtom);
-
-    const params = {
-        service: 'WFS',
-        version: '1.3.0',
-        request: 'GetFeature',
-        typeName: 'mrcdash:subprovince_lmb', 
-        outputFormat: 'application/json',  
-    };
     
     useEffect(() => {
+        const params = {
+            service: 'WFS',
+            version: '1.3.0',
+            request: 'GetFeature',
+            typeName: 'mrcdash:subprovince_lmb', 
+            outputFormat: 'application/json',  
+        };
         const endpoint = 'mrcdash/wfs'
         const fetchLMBData = async () => {
             const fetchedData = await GeoserverFetcher(params, endpoint);
@@ -24,7 +23,7 @@ const LMBSubProvinceLayer = () => {
             // console.log(fetchedData)
         };
         fetchLMBData();   
-    }, []); 
+    }, [setData]); 
 
     const defaultStyle = () => {
         return {

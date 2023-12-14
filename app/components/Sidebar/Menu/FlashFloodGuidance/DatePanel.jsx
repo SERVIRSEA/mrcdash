@@ -37,7 +37,7 @@ const CustomCalendar = () => {
       }
     }
     fetchDates();
-  }, []);
+  }, [setActiveDate, setAvailableDates]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {

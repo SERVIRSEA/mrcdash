@@ -7,24 +7,22 @@ import { useAtom } from 'jotai';
 const LMBRiverLayer = () => {
     const [data, setData] = useState(null);
     const [isVisible, setIsVisible] = useAtom(lmbRiverLayerVisibilityAtom);
-
-    const params = {
-        service: 'WFS',
-        version: '1.3.0',
-        request: 'GetFeature',
-        typeName: 'mrcdash:river_lmb', 
-        outputFormat: 'application/json',  
-    };
     
     useEffect(() => {
+        const params = {
+            service: 'WFS',
+            version: '1.3.0',
+            request: 'GetFeature',
+            typeName: 'mrcdash:river_lmb', 
+            outputFormat: 'application/json',  
+        };
         const endpoint = 'mrcdash/wfs'
         const fetchLMBData = async () => {
             const fetchedData = await GeoserverFetcher(params, endpoint);
             setData(fetchedData);
-            // console.log(fetchedData)
         };
         fetchLMBData();   
-    }, []); 
+    }, [setData]); 
 
     const defaultStyle = () => {
         return {
