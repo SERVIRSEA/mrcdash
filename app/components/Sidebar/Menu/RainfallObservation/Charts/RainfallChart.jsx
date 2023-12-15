@@ -13,15 +13,15 @@ function RainfallChart({ count, totalEvents, eventColor, totalEventsColor }) {
                 return `<b>${count}</b> of <b>${totalEvents}</b> stations (${((count / totalEvents) * 100).toFixed(1)}%)`;
             };
     
-            const chartCenterX = chart.plotWidth / 2.1;
+            const chartCenterX = chart.plotWidth / 2;
             const chartCenterY = chart.plotHeight / 2;
 
-            const countText = `<tspan x="${chartCenterX}" y="${chartCenterY + 26}" style="font-size: 40px; text-align: center;">${count}</tspan>`;
+            const countText = `<tspan x="${chartCenterX + 2}" y="${chartCenterY + 18}" style="font-size: 20px; text-align: center;">${count}</tspan>`;
     
             const textElement = chart.renderer
                 .text(countText, chartCenterX, chartCenterY)
                 .attr({
-                    zIndex: 999,
+                    zIndex: 1,
                 })
                 .css({
                     color: '#000',
@@ -39,11 +39,11 @@ function RainfallChart({ count, totalEvents, eventColor, totalEventsColor }) {
     const options = {
         chart: {
             type: 'pie',
-            spacingTop: 0, 
-            spacingBottom: 0,
-            // height: '300px', 
-            // width: '300px',
-            margin: [0, 0, 0, 0],
+            // spacingTop: 0, 
+            // spacingBottom: 0,
+            height: 150, 
+            width: 150,
+            // margin: [0, 0, 0, 0],
         },
         title: false,
         plotOptions: {

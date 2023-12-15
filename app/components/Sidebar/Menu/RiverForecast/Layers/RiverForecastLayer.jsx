@@ -3,20 +3,21 @@ import { GeoJSON } from 'react-leaflet';
 import { useAtom } from 'jotai';
 import axios from 'axios';
 import L from 'leaflet';
-import { rfDataAtom, rfVisibilityAtom, rfContentAtom } from '../state/RiverForecastAtom';
+import { rfDataAtom, rfVisibilityAtom, rfContentAtom, selectedStationAtom } from '../state/RiverForecastAtom';
 
 const RiverForecastLayer = () => {
     const [isVisible] = useAtom(rfVisibilityAtom);
     const [mapData, setMapData] = useAtom(rfDataAtom);
     const [contentData, setContentData] = useAtom(rfContentAtom);
     const [isContentDataReady, setIsContentDataReady] = useState(false);
+    const [, setStation] = useAtom(selectedStationAtom)
 
     const getIncreaseDecreaseColor = (stationName) => {
         const stationData = contentData.find(entry => entry.station_name === stationName);
         if (stationData) {
             switch (stationData.increase_decrease) {
                 case 'increase':
-                    return 'green'; 
+                    return 'green';
                 case 'decrease':
                     return 'brown';
                 case 'neutral':
@@ -63,31 +64,42 @@ const RiverForecastLayer = () => {
             return null; // Return null if content data is not ready
         }
 
-        // Function to apply style based on colorData
         const stationName = feature.properties.STATION_NA;
         const increaseDecreaseColor = getIncreaseDecreaseColor(stationName);
 
+        // Create a custom divIcon with an SVG marker and dynamic color
+        const customDivIcon = L.divIcon({
+            className: 'custom-svg-marker',
+            iconSize: [24, 24],
+            html: `<div style="color: ${increaseDecreaseColor}">${createSvgMarker(increaseDecreaseColor)}</div>`,
+        });
+
+        // Use the custom divIcon for the marker
         const pointStyle = {
-            radius: 4,
-            fillColor: '#fff',
-            color: increaseDecreaseColor,
-            weight: 4,
-            opacity: 1,
-            fillOpacity: 0.8,
+            icon: customDivIcon,
         };
 
-        return L.circleMarker(latlng, pointStyle);
+        return L.marker(latlng, pointStyle);
+    };
+
+    const createSvgMarker = (fillColor) => {
+        // Customize your SVG marker here
+        return `
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 384 512">
+            <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" fill="${fillColor}"/>
+        </svg>
+        `;
     };
 
     const onEachFeature = (feature, layer) => {
         const stationName = feature.properties.STATION_NA;
         layer.bindTooltip(stationName);
         layer.on({
-            mouseover: (event) => {
-                event.target.setStyle({color: 'yellow'});
+            mouseover: () => {
+                setStation(stationName);
             },
-            mouseout: (event) => {
-                event.target.setStyle({color: getIncreaseDecreaseColor(stationName)});
+            mouseout: () => {
+                setStation(null);
             },
         });
     };

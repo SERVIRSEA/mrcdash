@@ -63,7 +63,7 @@ function RainfallContent() {
   };
 
   return (
-    <Box p={2} sx={{ overflow: 'auto', height: '65vh'}}>
+    <Box p={2} sx={{ overflow: 'auto', height: '65vh', textAlign: 'center'}}>
         <Grid container spacing={2}>
             <Grid item xs={6}>
                 <div style={gridItemStyle}>
@@ -73,15 +73,14 @@ function RainfallContent() {
                     <Typography variant="body2" style={{ textAlign: 'center', marginBottom: '0px' }}>
                         90+ mm
                     </Typography>
+                    <RainfallChart
+                        key={0}
+                        count={categoryCounts["Very Heavy Rain"]}
+                        totalEvents={totalEvents}
+                        eventColor="#e53935"
+                        totalEventsColor="#ef9a9a"
+                    />
                 </div>
-                <RainfallChart
-                    key={0}
-                    count={categoryCounts["Very Heavy Rain"]}
-                    totalEvents={totalEvents}
-                    eventColor="#e53935"
-                    totalEventsColor="#ef9a9a"
-                    style={{marginTop: 0, paddingTop:0}}
-                />
             </Grid>
 
             <Grid item xs={6}>
@@ -92,14 +91,14 @@ function RainfallContent() {
                     <Typography variant="body2" style={{ textAlign: 'center' }}>
                         36 - 90 mm
                     </Typography>
+                    <RainfallChart
+                        key={0}
+                        count={categoryCounts["Heavy Rain"]}
+                        totalEvents={totalEvents}
+                        eventColor="#ffb74d"
+                        totalEventsColor="#ffe0b2"
+                    />
                 </div>
-                <RainfallChart
-                    key={0}
-                    count={categoryCounts["Heavy Rain"]}
-                    totalEvents={totalEvents}
-                    eventColor="#ffb74d"
-                    totalEventsColor="#ffe0b2"
-                />
             </Grid>
         </Grid>
         <Grid container spacing={2}>
@@ -111,16 +110,15 @@ function RainfallContent() {
                     <Typography variant="body2" style={{ textAlign: 'center' }}>
                         15 - 35 mm
                     </Typography>
+                    <RainfallChart
+                        key={0}
+                        count={categoryCounts["Moderate Rain"]}
+                        totalEvents={totalEvents}
+                        eventColor="#ffa000"
+                        totalEventsColor="#ffe082"
+                    />
                 </div>
-                <RainfallChart
-                    key={0}
-                    count={categoryCounts["Moderate Rain"]}
-                    totalEvents={totalEvents}
-                    eventColor="#ffa000"
-                    totalEventsColor="#ffe082"
-                />
             </Grid>
-
             <Grid item xs={6}>
                 <div style={gridItemStyle}>
                     <Typography variant="h6">
@@ -129,14 +127,14 @@ function RainfallContent() {
                     <Typography variant="body2" style={{ textAlign: 'center' }}>
                         1 - 10 mm
                     </Typography>
+                    <RainfallChart
+                        key={0}
+                        count={categoryCounts["Light Rain"]}
+                        totalEvents={totalEvents}
+                        eventColor="#1565c0"
+                        totalEventsColor="#90caf9"
+                    />
                 </div>
-                <RainfallChart
-                    key={0}
-                    count={categoryCounts["Light Rain"]}
-                    totalEvents={totalEvents}
-                    eventColor="#1565c0"
-                    totalEventsColor="#90caf9"
-                />
             </Grid>
         </Grid>
         <Grid container spacing={2}>
@@ -148,14 +146,14 @@ function RainfallContent() {
                     <Typography variant="body2" style={{ textAlign: 'center', marginBottom: '0px' }}>
                         0 mm
                     </Typography>
+                    <RainfallChart
+                        key={0}
+                        count={categoryCounts["No Rain"]}
+                        totalEvents={totalEvents}
+                        eventColor="#bdbdbd"
+                        totalEventsColor="#eeeeee"
+                    />
                 </div>
-                <RainfallChart
-                    key={0}
-                    count={categoryCounts["No Rain"]}
-                    totalEvents={totalEvents}
-                    eventColor="#bdbdbd"
-                    totalEventsColor="#eeeeee"
-                />
             </Grid>
 
             <Grid item xs={6}>
@@ -166,14 +164,14 @@ function RainfallContent() {
                     <Typography variant="body2" style={{ textAlign: 'center' }}>
                         
                     </Typography>
+                    <RainfallChart
+                        key={0}
+                        count={categoryCounts["Unknown"]}
+                        totalEvents={totalEvents}
+                        eventColor="#bdbdbd"
+                        totalEventsColor="#eeeeee"
+                    />
                 </div>
-                <RainfallChart
-                    key={0}
-                    count={categoryCounts["Unknown"]}
-                    totalEvents={totalEvents}
-                    eventColor="#bdbdbd"
-                    totalEventsColor="#eeeeee"
-                />
             </Grid>
         </Grid>
     </Box>

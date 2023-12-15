@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useAtom } from 'jotai';
-import { rfContentAtom } from './state/RiverForecastAtom';
+import { rfContentAtom, selectedStationAtom } from './state/RiverForecastAtom';
 import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { FaArrowUp, FaArrowDown, FaRegSquare } from 'react-icons/fa';
 
 const RiverForecastContent = () => {
     const [data] = useAtom(rfContentAtom);
     const [loading, setLoading] = useState(true);
+    const [selectedStation] = useAtom(selectedStationAtom);
 
     useEffect(() => {
         // Check if data is available
@@ -26,12 +27,18 @@ const RiverForecastContent = () => {
                         <TableHead>
                             <TableRow>
                                 <TableCell>Station Name</TableCell>
-                                <TableCell>This Week&apos;s Trend</TableCell>
+                                <TableCell sx={{textAlign: 'center'}}>This Week&apos;s Trend</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {data.map((row) => (
-                                <TableRow key={row.station_name}>
+                                <TableRow 
+                                    key={row.station_name}
+                                    sx={{
+                                        background:
+                                            row.station_name === selectedStation ? 'lightgray' : 'inherit',
+                                    }}
+                                >
                                     <TableCell>{row.station_name}</TableCell>
                                     <TableCell sx={{textAlign: 'center'}}>
                                         {row.increase_decrease === 'increase' && (
