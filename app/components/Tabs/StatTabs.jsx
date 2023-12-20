@@ -9,6 +9,7 @@ import FFGSContent from '../Sidebar/Menu/FlashFloodGuidance/FFGSContent';
 import ReservoirTable from '../Sidebar/Menu/SupportingTools/RAT/Table/ReservoirTable';
 import RainfallContent from '../Sidebar/Menu/RainfallObservation/RainfallContent';
 import RiverForecastContent from '../Sidebar/Menu/RiverForecast/RiverForecastContent';
+import DroughtContent from '../Sidebar/Menu/DroughtForecast/DroughtContent';
 
 export default function StatTabs() {
   const [value, setValue] = useAtom(statTabValueAtom);
@@ -63,7 +64,7 @@ export default function StatTabs() {
         {value === 0 && <></>} 
         {value === 1 && <RiverForecastContent />}
         {value === 2 && <FFGSContent />}
-        {value === 3 && <></>}
+        {value === 3 && <DroughtContent />}
         {value === 4 && <></>}
         {value === 5 && <RainfallContent />}
         {value === 6 && <ReservoirTable />}
